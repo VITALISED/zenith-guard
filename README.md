@@ -1,2 +1,1 @@
-# discord-js-framework
-Thing :)
+# Zenith Guard
