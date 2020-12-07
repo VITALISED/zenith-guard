@@ -33,7 +33,7 @@ export default class Softban extends Command {
 
         if(!target.bannable) return message.channel.send(`Unable to softban ${target}, missing permissions`)
 
-        if(target.id === client.user?.id) return message.channel.send('I can\'t exactly do that to myself.')
+        if(target.id === global.client.user?.id) return message.channel.send('I can\'t exactly do that to myself.')
 
         target.ban({days: 0, reason: args.reason})
         message.guild.members.unban(target.id)

@@ -2,11 +2,11 @@
   "name": "discord-js-framework",
   "version": "1.0.0",
   "description": "Thing :)",
-  "main": "./dist/js/main.js",
+  "main": "./dist/main.js",
   "scripts": {
     "start": "node .",
-    "build": "gulp scripts",
-    "dev": "gulp"
+    "build": "tsc",
+    "dev": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -20,23 +20,19 @@
   "homepage": "https://github.com/VITALISED/discord-js-framework#readme",
   "dependencies": {
     "@types/moment-duration-format": "^2.2.2",
+    "@types/node": "^14.14.10",
     "boxen": "^4.2.0",
     "chalk": "^4.1.0",
     "discord.js": "^12.4.0",
     "discord.js-commando": "github:discordjs/Commando",
-    "gulp": "^4.0.0",
-    "gulp-typescript": "^6.0.0-alpha.1",
     "moment": "^2.29.1",
     "moment-duration-format": "^2.3.2"
   },
   "devDependencies": {
-    "@types/klaw": "^3.0.1",
     "@typescript-eslint/eslint-plugin": "^4.5.0",
     "@typescript-eslint/parser": "^4.5.0",
     "dotenv": "^8.2.0",
     "eslint": "^7.11.0",
-    "gulp-nodemon": "^2.5.0",
-    "merge2": "^1.4.1",
     "typescript": "^4.0.3"
   }
 }

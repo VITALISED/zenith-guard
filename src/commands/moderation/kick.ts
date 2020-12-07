@@ -34,7 +34,7 @@ export default class Mute extends Command {
         
         if (!target.kickable) return message.channel.send(`Unable to kick ${target}, missing permissions.`)
 
-        if(target.id === client.user?.id) return message.channel.send('I can\'t exactly do that to myself.')
+        if(target.id === global.client.user?.id) return message.channel.send('I can\'t exactly do that to myself.')
 
         target.kick(args.reason)
 

@@ -13,6 +13,6 @@ export default class Ping extends Command {
     
     public async run(message: CommandoMessage): Promise<Message | Message[] | null> {
         const msg = await message.channel.send('Pinging...')
-        return msg.edit(`**Pong**: Roundtrip ${(msg.editedTimestamp || msg.createdTimestamp) - (message.editedTimestamp || message.createdTimestamp)}ms. Heartbeat ${client.ws.ping}ms`)
+        return msg.edit(`**Pong**: Roundtrip ${(msg.editedTimestamp || msg.createdTimestamp) - (message.editedTimestamp || message.createdTimestamp)}ms. Heartbeat ${global.client.ws.ping}ms`)
     }  
 }

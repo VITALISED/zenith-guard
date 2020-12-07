@@ -41,12 +41,12 @@ export namespace Moderation {
 
         if(mention !== undefined) {
             try {
-                return client.users.cache.find(u => u.id == mention?.[1]) as User
+                return global.client.users.cache.find(u => u.id == mention?.[1]) as User
             } catch (error) { return undefined }
         } 
         
-        else if(client.users.cache.some(u => u.id === args.user)) {
-            return client.users.cache.find(u => u.id === args.user) as User
+        else if(global.client.users.cache.some(u => u.id === args.user)) {
+            return global.client.users.cache.find(u => u.id === args.user) as User
         }
     }
 }

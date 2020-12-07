@@ -1,4 +1,4 @@
-import { Message, MessageEmbed } from 'discord.js'
+import { ClientUser, Message, MessageEmbed } from 'discord.js'
 import { Command, CommandoClient, CommandoMessage } from 'discord.js-commando'
 
 export default class Help extends Command {
@@ -18,9 +18,9 @@ export default class Help extends Command {
     }
 
     public async run(message: CommandoMessage, args: { command: string }): Promise<Message | Message[] | null> {
-        const groups = client.registry.groups
+        const groups = global.client.registry.groups
         const showAll = args.command && args.command.toLowerCase() === 'all'
-        const commands = client.registry.findCommands(args.command, false, message)
+        const commands = global.client.registry.findCommands(args.command, false, message)
 
         if (args.command && !showAll) {
             let aliases
@@ -51,8 +51,7 @@ export default class Help extends Command {
             const embed = new MessageEmbed()
                 .setColor(process.env.EMBED_COLOR)
                 .setTitle('Help')
-                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                .setDescription(`__To get help about a specific command do:__\n${Command.usage('ping', message.guild ? message.guild.commandPrefix : undefined, client.user!)}`)
+                .setDescription(`__To get help about a specific command do:__\n${Command.usage('ping', message.guild ? message.guild.commandPrefix : undefined, global.client.user as ClientUser)}`)
                 .addFields(values)
 
             return message.channel.send(embed)
