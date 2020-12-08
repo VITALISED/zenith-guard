@@ -4,19 +4,18 @@ import chalk from 'chalk'
 
 /**
  * # Moderation
- * @namespace Moderation
  * 
  * A module for handling moderation functions.
  */
-export namespace Moderation {
+export class Moderation {
     /**
      * Gets a user and either returns a GuildMember or string exception.
      * @param args  Command Arguments
      * @returns {GuildMember | string} GuildMember object or string exception which can be handled.
      * @memberof Moderation
      */
-    export const getMember = (args: { user: string}, guild: Guild): GuildMember | string => {
-        const user = getUser(args)
+    static getMember = (args: { user: string}, guild: Guild): GuildMember | string => {
+        const user = Moderation.getUser(args)
     
         if (user === undefined) return 'User could not be found. (Make sure it\'s an @mention or user id!)'
 
@@ -36,7 +35,7 @@ export namespace Moderation {
      * @returns {User | undefined} User object or undefined
      * @memberof Moderation
      */
-    export const getUser = (args: { user: string }): User | undefined => {
+    static getUser = (args: { user: string }): User | undefined => {
         const mention = args.user.match(/^<@!?(\d+)>$/)
 
         if(mention !== undefined) {
@@ -44,7 +43,7 @@ export namespace Moderation {
                 return global.client.users.cache.find(u => u.id == mention?.[1]) as User
             } catch (error) { return undefined }
         } 
-        
+
         else if(global.client.users.cache.some(u => u.id === args.user)) {
             return global.client.users.cache.find(u => u.id === args.user) as User
         }

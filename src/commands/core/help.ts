@@ -23,10 +23,7 @@ export default class Help extends Command {
         const commands = global.client.registry.findCommands(args.command, false, message)
 
         if (args.command && !showAll) {
-            let aliases
-            if(commands[0].aliases.length === 0) {  
-                aliases = 'None'
-            } else { aliases = commands[0].aliases }
+            const aliases: string[] | 'None' = commands[0].aliases.length ? commands[0].aliases : 'None'
 
             const embed = new MessageEmbed()
                 .setColor(process.env.EMBED_COLOR)
